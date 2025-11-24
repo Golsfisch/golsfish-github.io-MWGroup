@@ -1,0 +1,94 @@
+/* style.css - Master styles for RealEstate & Rally templates */
+
+/* base variables */
+:root{
+  --bg:#0b0f14;
+  --card:#0f1720;
+  --muted:#9aa4b2;
+  --accent:#2dd4bf;
+  --accent2:#60a5fa;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --max-width:1200px;
+  --text:#e6eef3;
+  --gap:16px;
+  --sidebar-w:280px;
+  --font-sys: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body,#app{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sys);-webkit-font-smoothing:antialiased}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,0.03);background:linear-gradient(90deg,rgba(255,255,255,0.01),transparent)}
+.brand{font-weight:700}
+.top-actions{display:flex;gap:10px;align-items:center}
+.btn{background:var(--accent);color:#052;padding:8px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+.btn.small{padding:6px 8px;font-size:0.9rem}
+.select{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px}
+
+/* layout */
+.layout{display:flex;min-height:calc(100vh - 96px)}
+.sidebar{width:var(--sidebar-w);padding:18px;border-right:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);overflow:auto}
+.maincontent{flex:1;padding:20px 28px;max-width:var(--max-width);margin:0 auto;overflow:auto}
+
+/* sidebar items */
+.side-section{margin-bottom:20px}
+.side-section h3{margin:0 0 10px;font-size:0.95rem;color:var(--muted)}
+.nav-list{display:flex;flex-direction:column;gap:8px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--text);border:1px solid transparent}
+.nav-item:hover{background:rgba(255,255,255,0.02)}
+.nav-item.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#042;font-weight:700;border:1px solid rgba(255,255,255,0.04)}
+
+/* cards & utilities */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 24px rgba(2,6,23,0.5)}
+.kv{display:flex;gap:12px}
+.kv .k{color:var(--muted);min-width:120px}
+.kv .v{font-weight:600}
+
+/* buttons styles (shared) */
+.rect-btn{display:inline-block;padding:10px 18px;border-radius:8px;background:var(--accent);color:#052;text-decoration:none;font-weight:700;border:0;}
+
+/* responsive */
+@media (max-width:900px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;order:2}
+  .maincontent{order:1;padding:16px}
+}
+
+/* ----------------------------------------------------------- */
+/* REAL ESTATE THEME (light accent) - applied via data-theme attr */
+/* ----------------------------------------------------------- */
+[data-theme="realestate"]{
+  --bg:#fbfbfd;
+  --text:#0b1220;
+  --card:#ffffff;
+  --muted:#55606a;
+  --accent:#0b72b1;
+  --accent2:#0fa3ff;
+  --sidebar-w:260px;
+}
+[data-theme="realestate"] .topbar{background:linear-gradient(90deg, rgba(11,114,177,0.04), transparent)}
+[data-theme="realestate"] .nav-item.active{color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+
+/* realestate visual tweaks */
+[data-theme="realestate"] .card{border:1px solid rgba(11,114,177,0.06);box-shadow:0 8px 20px rgba(11,114,177,0.04)}
+
+/* ----------------------------------------------------------- */
+/* RALLY THEME (dark, high-contrast) */
+/* ----------------------------------------------------------- */
+[data-theme="rally"]{
+  --bg:#071018;
+  --text:#eaf6ff;
+  --card:linear-gradient(180deg,#071018,#0b1220);
+  --muted:#9fb8d0;
+  --accent:#ff5a1f; /* orange */
+  --accent2:#ffd200; /* yellow */
+  --sidebar-w:320px;
+}
+[data-theme="rally"] .topbar{background:linear-gradient(90deg, rgba(255,90,31,0.04), rgba(255,210,0,0.02))}
+[data-theme="rally"] .nav-item.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#081018;font-weight:800}
+[data-theme="rally"] .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+
+/* small helpers */
+.hrow{display:flex;gap:12px;align-items:center}
+.muted{color:var(--muted)}
+.footer{padding:16px;text-align:center;border-top:1px solid rgba(255,255,255,0.03);font-size:0.9rem;color:var(--muted)}
