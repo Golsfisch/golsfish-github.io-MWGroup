@@ -1,171 +1,38 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multi-Page Immobilien & Rally System</title>
-
-<style>
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body { 
-    font-family: Arial, sans-serif; 
-    background: #f0f0f0; 
-    padding-top: 140px; /* Platz für fixed Header */
-}
-
-/* FIXED HEADER */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #222;
-    color: white;
-    padding: 15px;
-    z-index: 999;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* Titel oben */
-header h1 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-/* TAB LEISTE (20 IMMO + 10 RALLY) */
-.tab-row {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 5px;
-}
-
-.tab-row::-webkit-scrollbar { height: 6px; }
-.tab-row::-webkit-scrollbar-thumb { background: #666; border-radius: 4px; }
-
-.tab {
-    background: #555;
-    padding: 8px 14px;
-    border-radius: 6px;
-    color: white;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 15px;
-    flex-shrink: 0;
-}
-.tab:hover { background: #999; }
-
-/* Pagination */
-.pagination {
-    margin-top: 15px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.page-btn {
-    padding: 6px 12px;
-    background: #333;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.page-btn:hover { background: #777; }
-
-/* Content */
-#content {
-    padding: 20px;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Master Template — Immobilien & Rally</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">Michael — Web & UX</div>
+      <div class="top-actions">
+        <button id="themeToggle" class="btn small">Theme</button>
+        <select id="designSelect" class="select small">
+          <option value="realestate">Immobilien</option>
+          <option value="rally">Rally</option>
+        </select>
+      </div>
+    </header>
 
-<header>
-    <h1>Immobilien & Rally Manager</h1>
+    <div class="layout">
+      <nav id="sidebar" class="sidebar"></nav>
 
-    <!-- 30 TABS -->
-    <div class="tab-row" id="tabRow"></div>
+      <main id="main" class="maincontent">
+        <!-- content injected here -->
+      </main>
+    </div>
 
-    <!-- Pagination 1–25 -->
-    <div class="pagination" id="pagination"></div>
-</header>
+    <footer class="footer">
+      <span>© 2025 Michael — Template</span>
+      <span class="muted"> — Hash routing | 30 pages (20 RE / 10 Rally)</span>
+    </footer>
+  </div>
 
-<div id="content">
-    <h2>Willkommen</h2>
-    <p>Wähle oben eine Seite aus.</p>
-</div>
-
-<script>
-/* ==========================================
-   GENERATE 20 IMMO + 10 RALLY TABS
-========================================== */
-
-const tabRow = document.getElementById("tabRow");
-const pagination = document.getElementById("pagination");
-const content = document.getElementById("content");
-
-// Create IMMO 1–20
-for (let i = 1; i <= 20; i++) {
-    let t = document.createElement("div");
-    t.className = "tab";
-    t.innerText = "Immo " + i;
-    t.onclick = () => loadTab("Immo", i);
-    tabRow.appendChild(t);
-}
-
-// Create Rally 1–10
-for (let i = 1; i <= 10; i++) {
-    let t = document.createElement("div");
-    t.className = "tab";
-    t.innerText = "Rally " + i;
-    t.onclick = () => loadTab("Rally", i);
-    tabRow.appendChild(t);
-}
-
-/* ==========================================
-   GENERATE PAGE NUMBERS 1–25
-========================================== */
-
-for (let i = 1; i <= 25; i++) {
-    let p = document.createElement("div");
-    p.className = "page-btn";
-    p.innerText = i;
-    p.onclick = () => loadPage(i);
-    pagination.appendChild(p);
-}
-
-/* ==========================================
-   LOADERS
-========================================== */
-
-function loadTab(category, number) {
-    content.innerHTML = `
-        <div class="card">
-            <h2>${category} Seite ${number}</h2>
-            <p>Hier kannst du später vollwertigen Inhalt einfügen.</p>
-            <p>Diese Seite ist dynamisch geladen.</p>
-        </div>
-    `;
-}
-
-function loadPage(num) {
-    content.innerHTML = `
-        <div class="card">
-            <h2>Allgemeine Seite ${num}</h2>
-            <p>Das ist eine generierte Navigationsseite (Pagination).</p>
-        </div>
-    `;
-}
-</script>
-
+  <script src="app.js"></script>
 </body>
 </html>
