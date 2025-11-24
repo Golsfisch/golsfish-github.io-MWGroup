@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Master Template — Immobilien & Rally</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">Michael — Web & UX</div>
+      <div class="top-actions">
+        <button id="themeToggle" class="btn small">Theme</button>
+        <select id="designSelect" class="select small">
+          <option value="realestate">Immobilien</option>
+          <option value="rally">Rally</option>
+        </select>
+      </div>
+    </header>
+
+    <div class="layout">
+      <nav id="sidebar" class="sidebar"></nav>
+
+      <main id="main" class="maincontent">
+        <!-- content injected here -->
+      </main>
+    </div>
+
+    <footer class="footer">
+      <span>© 2025 Michael — Template</span>
+      <span class="muted"> — Hash routing | 30 pages (20 RE / 10 Rally)</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
